@@ -174,7 +174,7 @@ function httpGet(query, callback) {
         
         //return the data when streaming is complete
         res.on('end', () => {
-            console.log(responseString);
+            //console.log(responseString);
             callback(responseString);
         });
 
@@ -212,10 +212,14 @@ const FindGameIntent_Handler =  {
         //   SLOT: game 
         if (slotValues.game.heardAs && slotValues.game.heardAs !== '') {
             slotStatus += ' slot game was heard as ' + slotValues.game.heardAs + '. ';
+
+            var query = '/api/search/?api_key=229e0d62353bdc198fed73d614e8e087bd9966f8&format=json&query=';
+
+            query += slotValues.game.heardAs.split(' ').join('+')
             
-            httpGet('/api/search/?api_key=229e0d62353bdc198fed73d614e8e087bd9966f8&format=json&query=fallout+3',  (theResult) => {
+            httpGet(query,  (theResult) => {
                 //console.log("sent     : " + query);
-                console.log("received : " + theResult.limit);
+                console.log("received : " + theResult);
                 
             });
 
