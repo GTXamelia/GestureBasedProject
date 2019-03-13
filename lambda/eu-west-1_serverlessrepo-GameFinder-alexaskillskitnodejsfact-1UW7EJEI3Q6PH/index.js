@@ -154,6 +154,33 @@ const AMAZON_NavigateHomeIntent_Handler =  {
     },
 };
 
+function httpGet(query, callback) {
+
+    const options = {
+        hostname: 'www.giantbomb.com',
+        path: query,
+        headers: { 'User-Agent': 'Alexa Project Bot GMIT' },
+        method: 'GET'
+      };
+
+    var req = https.request(options, res => {
+        res.setEncoding('utf8');
+        var responseString = "";
+        
+        //accept incoming data asynchronously
+        res.on('data', chunk => {
+            responseString = responseString + chunk;
+        });
+        
+        //return the data when streaming is complete
+        res.on('end', () => {
+            console.log(responseString);
+            callback(responseString);
+        });
+
+    });
+    req.end();
+}
 
 const FindGameIntent_Handler =  {
     canHandle(handlerInput) {
@@ -186,7 +213,11 @@ const FindGameIntent_Handler =  {
         if (slotValues.game.heardAs && slotValues.game.heardAs !== '') {
             slotStatus += ' slot game was heard as ' + slotValues.game.heardAs + '. ';
             
-            
+            httpGet('/api/search/?api_key=229e0d62353bdc198fed73d614e8e087bd9966f8&format=json&query=fallout+3',  (theResult) => {
+                //console.log("sent     : " + query);
+                console.log("received : " + theResult.limit);
+                
+            });
 
         } else {
             slotStatus += 'slot game is empty. ';
