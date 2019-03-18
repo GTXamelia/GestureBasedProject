@@ -217,40 +217,34 @@ const FindGameIntent_Handler =  {
 
             query += slotValues.game.heardAs.split(' ').join('+')
             
-            httpGet(query,  (theResult) => {
-                //console.log("sent     : " + query);
-                console.log("received : " + theResult);
-                
+            console.log(query);
+
+            var test;
+
+            return new Promise((resolve) => {
+                httpGet(query,  (theResult) => {
+                    var json = JSON.parse(theResult);
+                    console.log("received : " + json.results[0].deck);
+                    test = JSON.parse(theResult);
+                    slotStatus += json.results[0].deck;
+
+                    say = json.results[0].deck;
+
+                    //return responseBuilder.speak(say).reprompt('try again, ' + say).getResponse();
+                    resolve(handlerInput.responseBuilder.speak(say).getResponse());
+                });
             });
+
+            console.log("Json : " + test);
 
         } else {
             slotStatus += 'slot game is empty. ';
         }
-        if (slotValues.game.ERstatus === 'ER_SUCCESS_MATCH') {
-            slotStatus += 'a valid ';
-            if(slotValues.game.resolved !== slotValues.game.heardAs) {
-                slotStatus += 'synonym for ' + slotValues.game.resolved + '. '; 
-                } else {
-                slotStatus += 'match. '
-            } // else {
-                //
-        }
-        if (slotValues.game.ERstatus === 'ER_SUCCESS_NO_MATCH') {
-            slotStatus += 'which did not match any slot value. ';
-            console.log('***** consider adding "' + slotValues.game.heardAs + '" to the custom slot type used by slot game! '); 
-        }
-
-        if( (slotValues.game.ERstatus === 'ER_SUCCESS_NO_MATCH') ||  (!slotValues.game.heardAs) ) {
-           // slotStatus += 'A few valid values are, ' + sayArray(getExampleSlotValues('FindGameIntent','game'), 'or');
-        }
-
-        say += slotStatus;
-
 
         return responseBuilder
-            .speak(say)
-            .reprompt('try again, ' + say)
-            .getResponse();
+                    .speak(say)
+                    .reprompt('try again, ' + say)
+                    .getResponse();
     },
 };
 
