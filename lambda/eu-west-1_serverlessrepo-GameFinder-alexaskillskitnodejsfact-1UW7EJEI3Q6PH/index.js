@@ -158,7 +158,7 @@ function httpGet(query, callback) {
 
     const options = {
         hostname: 'www.giantbomb.com',
-        path: query,
+        path: query + '&limit=1',
         headers: { 'User-Agent': 'Alexa Project Bot GMIT' },
         method: 'GET'
       };
@@ -315,7 +315,6 @@ function capitalize(myString) {
 
      return myString.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); }) ;
 }
-
  
 function randomElement(myArray) { 
     return(myArray[Math.floor(Math.random() * myArray.length)]); 
