@@ -200,10 +200,9 @@ const FindGameIntent_Handler =  {
                 .getResponse();
 
         } 
-        let say = 'Hello from FindGameIntent. ';
+        let say = '';
 
         let slotStatus = '';
-        let resolvedSlot;
 
         let slotValues = getSlotValues(request.intent.slots); 
         // getSlotValues returns .heardAs, .resolved, and .isValidated for each slot, according to request slot status codes ER_SUCCESS_MATCH, ER_SUCCESS_NO_MATCH, or traditional simple request slot without resolutions
@@ -211,7 +210,6 @@ const FindGameIntent_Handler =  {
         // console.log('***** slotValues: ' +  JSON.stringify(slotValues, null, 2));
         //   SLOT: game 
         if (slotValues.game.heardAs && slotValues.game.heardAs !== '') {
-            slotStatus += ' slot game was heard as ' + slotValues.game.heardAs + '. ';
 
             var query = '/api/search/?api_key=229e0d62353bdc198fed73d614e8e087bd9966f8&format=json&query=';
 
@@ -219,13 +217,10 @@ const FindGameIntent_Handler =  {
             
             console.log(query);
 
-            var test;
-
             return new Promise((resolve) => {
                 httpGet(query,  (theResult) => {
                     var json = JSON.parse(theResult);
                     console.log("received : " + json.results[0].deck);
-                    test = JSON.parse(theResult);
                     slotStatus += json.results[0].deck;
 
                     say = json.results[0].deck;
@@ -235,14 +230,11 @@ const FindGameIntent_Handler =  {
                         .speak(say)
                         .withStandardCard(slotValues.game.heardAs, 
                             json.results[0].deck,
-                            json.results[0].image.screen_url, 
-                            json.results[0].image.screen_large_url)
+                            json.results[0].image.small_url, 
+                            json.results[0].image.medium_url)
                         .getResponse());
                 });
             });
-
-            console.log("Json : " + test);
-
         } else {
             slotStatus += 'slot game is empty. ';
         }
