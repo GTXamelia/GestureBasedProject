@@ -231,7 +231,13 @@ const FindGameIntent_Handler =  {
                     say = json.results[0].deck;
 
                     //return responseBuilder.speak(say).reprompt('try again, ' + say).getResponse();
-                    resolve(handlerInput.responseBuilder.speak(say).getResponse());
+                    resolve(handlerInput.responseBuilder
+                        .speak(say)
+                        .withStandardCard(slotValues.game.heardAs, 
+                            json.results[0].deck,
+                            json.results[0].image.screen_url, 
+                            json.results[0].image.screen_large_url)
+                        .getResponse());
                 });
             });
 
