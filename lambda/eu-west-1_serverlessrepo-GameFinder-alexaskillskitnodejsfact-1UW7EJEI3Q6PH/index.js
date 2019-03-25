@@ -246,6 +246,72 @@ const FindGameIntent_Handler =  {
     },
 };
 
+const FindPersonIntent_Handler =  {
+    canHandle(handlerInput) {
+        const request = handlerInput.requestEnvelope.request;
+        return request.type === 'IntentRequest' && request.intent.name === 'FindPersonIntent' ;
+    },
+    handle(handlerInput) {
+        const request = handlerInput.requestEnvelope.request;
+        const responseBuilder = handlerInput.responseBuilder;
+        let sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+
+        // delegate to Alexa to collect all the required slots 
+        const currentIntent = request.intent; 
+        if (request.dialogState && request.dialogState !== 'COMPLETED') { 
+            return handlerInput.responseBuilder
+                .addDelegateDirective(currentIntent)
+                .getResponse();
+
+        } 
+
+        console.log("Inside  : "+ request.intent.name);
+
+        let say = '';
+
+        let slotStatus = '';
+
+        let slotValues = getSlotValues(request.intent.slots); 
+        
+        if (slotValues.person.heardAs && slotValues.person.heardAs !== '') {
+            
+            var query = '/api/search/?api_key=229e0d62353bdc198fed73d614e8e087bd9966f8&format=json&query=';
+
+            query += slotValues.person.heardAs.split(' ').join('+')
+
+            console.log("www.giantbomb.com" + query);
+
+            return new Promise((resolve) => {
+                httpGet(query,  (theResult) => {
+                    var json = JSON.parse(theResult);
+                    console.log("received : " + json.results[0].deck);
+
+                    slotStatus += json.results[0].deck;
+
+                    say += json.results[0].deck;
+
+                    if(json.results[0].first_appeared_in_game.name != null){
+                        say += " First game appeared in was " + json.results[0].first_appeared_in_game.name;
+                    }
+                    
+
+                    resolve(handlerInput.responseBuilder
+                        .speak(say)
+                        .withStandardCard(slotValues.person.heardAs, 
+                            say,
+                            json.results[0].image.small_url, 
+                            json.results[0].image.medium_url)
+                        .getResponse());
+                });
+            });
+        } else {
+            say += 'slot person is empty. ';
+        }
+
+        return responseBuilder.speak(say).reprompt('try again, ' + say).getResponse();
+    },
+};
+
 const LaunchRequest_Handler =  {
     canHandle(handlerInput) {
         const request = handlerInput.requestEnvelope.request;
@@ -698,6 +764,7 @@ exports.handler = skillBuilder
         AMAZON_StopIntent_Handler, 
         AMAZON_NavigateHomeIntent_Handler, 
         FindGameIntent_Handler, 
+        FindPersonIntent_Handler, 
         LaunchRequest_Handler, 
         SessionEndedHandler
     )
@@ -757,6 +824,18 @@ const model = {
           ]
         },
         {
+            "name": "FindPersonIntent",
+            "slots": [
+              {
+                "name": "person",
+                "type": "AMAZON.Person"
+              }
+            ],
+            "samples": [
+              "who is {person}"
+            ]
+          },
+        {
           "name": "LaunchRequest"
         }
       ],
@@ -779,7 +858,23 @@ const model = {
               }
             }
           ]
-        }
+        },
+        {
+            "name": "FindPersonIntent",
+            "confirmationRequired": false,
+            "prompts": {},
+            "slots": [
+              {
+                "name": "person",
+                "type": "AMAZON.Person",
+                "confirmationRequired": false,
+                "elicitationRequired": true,
+                "prompts": {
+                  "elicitation": ""
+                }
+              }
+            ]
+          }
       ],
       "delegationStrategy": "ALWAYS"
     }
