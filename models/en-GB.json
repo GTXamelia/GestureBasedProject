@@ -34,6 +34,18 @@
           "samples": [
             "what is {game}"
           ]
+        },
+        {
+          "name": "FindPersonIntent",
+          "slots": [
+            {
+              "name": "person",
+              "type": "AMAZON.Person"
+            }
+          ],
+          "samples": [
+            "who is {person}"
+          ]
         }
       ],
       "types": []
