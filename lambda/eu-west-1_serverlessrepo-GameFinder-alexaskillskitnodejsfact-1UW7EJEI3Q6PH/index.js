@@ -265,8 +265,6 @@ const FindPersonIntent_Handler =  {
 
         } 
 
-        console.log("Inside  : "+ request.intent.name);
-
         let say = '';
 
         let slotStatus = '';
@@ -275,37 +273,11 @@ const FindPersonIntent_Handler =  {
         
         if (slotValues.person.heardAs && slotValues.person.heardAs !== '') {
             
-            var query = '/api/search/?api_key=229e0d62353bdc198fed73d614e8e087bd9966f8&format=json&query=';
+            say += " Welcome to find person";
 
-            query += slotValues.person.heardAs.split(' ').join('+')
 
-            console.log("www.giantbomb.com" + query);
-
-            return new Promise((resolve) => {
-                httpGet(query,  (theResult) => {
-                    var json = JSON.parse(theResult);
-                    console.log("received : " + json.results[0].deck);
-
-                    slotStatus += json.results[0].deck;
-
-                    say += json.results[0].deck;
-
-                    if(json.results[0].first_appeared_in_game.name != null){
-                        say += " First game appeared in was " + json.results[0].first_appeared_in_game.name;
-                    }
-                    
-
-                    resolve(handlerInput.responseBuilder
-                        .speak(say)
-                        .withStandardCard(slotValues.person.heardAs, 
-                            say,
-                            json.results[0].image.small_url, 
-                            json.results[0].image.medium_url)
-                        .getResponse());
-                });
-            });
         } else {
-            say += 'slot person is empty. ';
+            slotStatus += 'slot game is empty. ';
         }
 
         return responseBuilder.speak(say).reprompt('try again, ' + say).getResponse();
