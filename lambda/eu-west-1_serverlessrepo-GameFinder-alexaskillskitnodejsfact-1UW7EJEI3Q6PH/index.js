@@ -202,13 +202,8 @@ const FindGameIntent_Handler =  {
         } 
         let say = '';
 
-        let slotStatus = '';
-
         let slotValues = getSlotValues(request.intent.slots); 
-        // getSlotValues returns .heardAs, .resolved, and .isValidated for each slot, according to request slot status codes ER_SUCCESS_MATCH, ER_SUCCESS_NO_MATCH, or traditional simple request slot without resolutions
 
-        // console.log('***** slotValues: ' +  JSON.stringify(slotValues, null, 2));
-        //   SLOT: game 
         if (slotValues.game.heardAs && slotValues.game.heardAs !== '') {
 
             var query = '/api/search/?api_key=229e0d62353bdc198fed73d614e8e087bd9966f8&format=json&query=';
@@ -219,13 +214,18 @@ const FindGameIntent_Handler =  {
 
             return new Promise((resolve) => {
                 httpGet(query,  (theResult) => {
+
                     var json = JSON.parse(theResult);
+
                     console.log("received : " + json.results[0].deck);
-                    slotStatus += json.results[0].deck;
 
-                    say = json.results[0].deck;
+                    if(json.results[0].first_appeared_in_game.name != null){
+                        say += json.results[0].deck;
+                        
+                    } else {
+                        say += "Couldn't find any details about " + slotValues.person.heardAs + "."; 
+                    }
 
-                    //return responseBuilder.speak(say).reprompt('try again, ' + say).getResponse();
                     resolve(handlerInput.responseBuilder
                         .speak(say)
                         .withStandardCard(slotValues.game.heardAs, 
@@ -265,19 +265,48 @@ const FindPersonIntent_Handler =  {
 
         } 
 
-        let say = '';
+        console.log("Inside  : "+ request.intent.name);
 
-        let slotStatus = '';
+        let say = '';
 
         let slotValues = getSlotValues(request.intent.slots); 
         
         if (slotValues.person.heardAs && slotValues.person.heardAs !== '') {
             
-            say += " Welcome to find person";
+            var query = '/api/search/?api_key=229e0d62353bdc198fed73d614e8e087bd9966f8&format=json&query=';
 
+            query += slotValues.person.heardAs.split(' ').join('+')
 
+            console.log("www.giantbomb.com" + query);
+
+            return new Promise((resolve) => {
+                httpGet(query,  (theResult) => {
+                    var json = JSON.parse(theResult);
+                    console.log("received : " + json.results[0].deck);
+
+                    if(json.results[0].first_appeared_in_game.name != null){
+                        say += json.results[0].deck;
+                        
+                    } else {
+                        say += "Couldn't find any details about " + slotValues.person.heardAs + "."; 
+                    }
+                    
+                    if(json.results[0].first_appeared_in_game.name != null){
+                        say += " First game appeared in was " + json.results[0].first_appeared_in_game.name;
+                    }
+                    
+
+                    resolve(handlerInput.responseBuilder
+                        .speak(say)
+                        .withStandardCard(slotValues.person.heardAs, 
+                            say,
+                            json.results[0].image.small_url, 
+                            json.results[0].image.medium_url)
+                        .getResponse());
+                });
+            });
         } else {
-            slotStatus += 'slot game is empty. ';
+            say += 'slot person is empty. ';
         }
 
         return responseBuilder.speak(say).reprompt('try again, ' + say).getResponse();
