@@ -1,8 +1,8 @@
 <p align="center">
   <a href="https://imgur.com/nBF0w5gC"><img src="https://imgur.com/nBF0w5g.png" height="10%" width="10%" title="header image"/></a>
-  <h1>GameFinder</h1>
 </p>
 
+# GameFinder
 GameFinder is an Alexa Skill which allows user using voice controls to prompt the user to search for details about video games, locations in games and characters in games.
 
 ## Table of contents
@@ -43,9 +43,10 @@ Git clone https://github.com/cian2009/GestureBasedProject
 
 4. npm install
 
-5. ask init
-
-
+5. Initialise project using ASK CLI
+```
+ask init
+```
 
 ## Running the tests
 
@@ -76,6 +77,8 @@ Audio:                |  UI:
 ![](https://imgur.com/BUINYCy.png)  |  ![](https://imgur.com/pqciSk6.png)
 
 
+
+
 ## Alexa Store Report
 
 ### Submission 1 (Passed)
@@ -87,15 +90,21 @@ Audio:                |  UI:
 #### Certification Analysis
 
 
+## Videos
 
+### Presentation
+[![Presentation](https://imgur.com/9oJxbiZ.png)](https://www.youtube.com/watch?v=kANHj3TlU7M)
+
+### Demo
+[![Demo](https://imgur.com/9oJxbiZ.png)](https://www.youtube.com/watch?v=G4bOt0RVIpo)
 
 ## Built With
 
 * [Visual Studio Code](https://code.visualstudio.com/) - IDE used
 * [Alexa Developer Console](https://developer.amazon.com/alexa/console/ask) - Used to create and distribute the skill
 * [AWS Lambda](https://aws.amazon.com/lambda/) - AWS Lamdba is used to host the source code used by the skill
-* [StackOverflow](https://stackoverflow.com/) - Community forum for troubleshooting
 * [GiantBomb API](https://www.giantbomb.com/api/) - API used to access game, location and character information
+* [StackOverflow](https://stackoverflow.com/) - Community forum for troubleshooting
 
 ## Authors
 
