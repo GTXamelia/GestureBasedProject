@@ -11,7 +11,7 @@ GameFinder is an Alexa Skill which allows user using voice controls to prompt th
 
 - Setup blank folder
 - Right click on project folder
-- Git clone https://github.com/cian2009/UWPIrishTransportTracker.git
+- Git clone https://github.com/cian2009/GestureBasedProject.git
 
 ### Prerequisites
 
@@ -76,15 +76,38 @@ Audio:                |  UI:
 :-------------------------:|:-------------------------:
 ![](https://imgur.com/BUINYCy.png)  |  ![](https://imgur.com/pqciSk6.png)
 
-## Alexa Store Report
+#### Phrase not built into intent
 
-### Submission 1 (Passed)
+Due to how alexa works to find which intent works best with what the user is trying to call, we can also used phrases not built into how intents are called.
+Alexa is very good at adapting to the user using a phrase outside what the intents have been built to use.
+
+Example call:
+<img src="https://imgur.com/TW7ifza.png"/>
+
+Audio:                |  UI:
+:-------------------------:|:-------------------------:
+![](https://imgur.com/9UvoktQ.png)  |  ![](https://imgur.com/lcAoGlD.png)
+
+## Alexa Skill Store Report
+
+### Submission (Passed)
 
 #### Automatic Review
+Validation:                |  Functional test:
+:-------------------------:|:-------------------------:
+![](https://imgur.com/lU1Tvs3.png)  |  ![](https://imgur.com/KfVUAX8.png)
+
+The automatic review just checked if the basic intents were programmed into the Skill and checked if the custom intents exsisted.
+This review passed as it found no bugs and found custom intents and all five 'Built-In Intents' were programmed into the skill.
 
 #### Manual Review
+<img src="https://imgur.com/cEqiHM0.png"/>
+
+The manual review is done by an employee at Amazon. The skill passed the manual review as the custom intents had enough content to get into the skill store.
+And all five 'Built-In Intents' were present and working.
 
 #### Certification Analysis
+The Certification process was very quick and gave feedback along the way in order to make the process as painless as possible for developers.
 
 
 ## Videos
