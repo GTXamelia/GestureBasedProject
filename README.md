@@ -1,4 +1,4 @@
-<a href="https://imgur.com/9NAtgPC"><img src="https://imgur.com/9NAtgPC.png" height="75" width="450" title="Bus Adding Test"/></a>
+<a href="https://imgur.com/nBF0w5gC"><img src="https://imgur.com/nBF0w5g.png" height="50" width="10%" title="Bus Adding Test"/></a>
 
 Brief Desctiption
 
