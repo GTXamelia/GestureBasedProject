@@ -16,7 +16,7 @@ GameFinder is an Alexa Skill which allows user using voice controls to prompt th
       - [Game](#game)
       - [Location](#location)
       - [Character](#character)
-    + [Testing Intents](#testing-intents)
+    + [Edge Cases](#testing-intents)
       - [Phrase not built into intent](#phrase-not-built-into-intent)
   * [Alexa Skill Store Report](#alexa-skill-store-report)
     + [Submission (Passed)](#submission--passed-)
@@ -78,6 +78,7 @@ ask init
 ### Intent Examples
 
 #### Game
+A basic query to the skill asking for data about Fallout 3
 
 > Alexa ask game finder what is Fallout 3
 
@@ -86,6 +87,7 @@ Audio:                |  UI:
 ![](https://imgur.com/jnvMdus.png)  |  ![](https://imgur.com/HVfg2Lo.png)
 
 #### Location
+A basic query to the skill asking for data about Megaton
 
 > Alexa ask game finder what is Megaton
 
@@ -94,6 +96,7 @@ Audio:                |  UI:
 ![](https://imgur.com/1bs61A4.png)  |  ![](https://imgur.com/84hGbu4.png)
 
 #### Character
+A basic query to the skill asking for data about Master Chief
 
 > Alexa ask game finder who is Master Chief
 
@@ -108,12 +111,29 @@ Audio:                |  UI:
 Due to how alexa works to find which intent works best with what the user is trying to call, we can also used phrases not built into how intents are called.
 Alexa is very good at adapting to the user using a phrase outside what the intents have been built to use.
 
-Example invocation:
 > Alexa ask game finder about fallout 3
 
 Audio:                |  UI:
 :-------------------------:|:-------------------------:
 ![](https://imgur.com/9UvoktQ.png)  |  ![](https://imgur.com/lcAoGlD.png)
+
+'about fallout 3' is not an intent, but Alexa can figure out of the available intents which would work best for what the user has said.
+
+#### Not giving a game, location or character
+
+> Alexa ask game finder what is
+
+Audio:                |  UI:
+:-------------------------:|:-------------------------:
+![](https://imgur.com/6RKPDQv.png)  |  ![](https://imgur.com/NmrGlXS.png)
+
+#### Giving non exsisting game, location or character
+
+> Alexa ask game finder what is 1234567890
+
+Audio:                |  UI:
+:-------------------------:|:-------------------------:
+![](https://imgur.com/fGwYeMP.png)  |  ![](https://imgur.com/paw5Y3y.png)
 
 ## Alexa Skill Store Report
 

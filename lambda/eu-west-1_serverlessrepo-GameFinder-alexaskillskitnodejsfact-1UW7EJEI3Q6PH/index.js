@@ -239,7 +239,7 @@ const FindGameIntent_Handler = {
                             // Add deck (Description) to say string
                             say += json.results[0].deck;
 
-                            // Prompt alexa to say and swho something
+                            // Prompt alexa to say and show something
                             resolve(handlerInput.responseBuilder
                                 .speak(say)
                                 .withStandardCard(slotValues.game.heardAs,
@@ -251,7 +251,7 @@ const FindGameIntent_Handler = {
                         } else {
                             say += "Couldn't find any details about " + slotValues.game.heardAs;
 
-                            // Prompt alexa to say and swho something
+                            // Prompt alexa to say and show something
                             resolve(handlerInput.responseBuilder
                                 .speak('Try again, ' + say + ". Or say exit to quit.")
                                 .reprompt('Try again, ' + say)
@@ -264,7 +264,7 @@ const FindGameIntent_Handler = {
                     } else {
                         say += "couldn't find any details about " + slotValues.game.heardAs;
 
-                        // Prompt alexa to say and swho something
+                        // Prompt alexa to say and show something
                         resolve(handlerInput.responseBuilder
                             .speak('Try again, ' + say + ". Or say exit to quit.")
                             .reprompt('Try again, ' + say)
@@ -280,7 +280,7 @@ const FindGameIntent_Handler = {
             say += 'slot game is empty';
         }
 
-        // Prompt alexa to say and swho something
+        // Prompt alexa to say and show something
         return handlerInput.responseBuilder
             .speak('Try again, ' + say + ". Or say exit to quit.")
             .reprompt('Try again, ' + say)
@@ -358,7 +358,7 @@ const FindPersonIntent_Handler = {
                                 say += " First game appeared in was " + json.results[0].first_appeared_in_game.name;
                             }
 
-                            // Prompt alexa to say and swho something
+                            // Prompt alexa to say and show something
                             resolve(handlerInput.responseBuilder
                                 .speak(say)
                                 .withStandardCard(slotValues.person.heardAs,
@@ -370,7 +370,7 @@ const FindPersonIntent_Handler = {
                         } else {
                             say += "couldn't find any details about " + slotValues.person.heardAs;
 
-                            // Prompt alexa to say and swho something
+                            // Prompt alexa to say and show something
                             resolve(handlerInput.responseBuilder
                                 .speak('Try again, ' + say + ". Or say exit to quit.")
                                 .reprompt('try again, ' + say)
@@ -383,7 +383,7 @@ const FindPersonIntent_Handler = {
                     } else {
                         say += "couldn't find any details about " + slotValues.person.heardAs;
 
-                        // Prompt alexa to say and swho something
+                        // Prompt alexa to say and show something
                         resolve(handlerInput.responseBuilder
                             .speak('Try again, ' + say + ". Or say exit to quit.")
                             .reprompt('Try again, ' + say)
@@ -399,7 +399,7 @@ const FindPersonIntent_Handler = {
             say += 'slot person is empty';
         }
 
-        // Prompt alexa to say and swho something
+        // Prompt alexa to say and show something
         return handlerInput.responseBuilder
             .speak('Try again, ' + say + ". Or say exit to quit.")
             .reprompt('Try again, ' + say)
