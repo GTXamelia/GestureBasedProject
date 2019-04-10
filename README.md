@@ -76,9 +76,6 @@ Audio:                |  UI:
 :-------------------------:|:-------------------------:
 ![](https://imgur.com/BUINYCy.png)  |  ![](https://imgur.com/pqciSk6.png)
 
-
-
-
 ## Alexa Store Report
 
 ### Submission 1 (Passed)
@@ -96,20 +93,24 @@ Audio:                |  UI:
 [![Presentation](https://imgur.com/9oJxbiZ.png)](https://www.youtube.com/watch?v=kANHj3TlU7M)
 
 ### Demo
-[![Demo](https://imgur.com/9oJxbiZ.png)](https://www.youtube.com/watch?v=G4bOt0RVIpo)
+[![Demo](https://imgur.com/teWgtUz.png)](https://www.youtube.com/watch?v=G4bOt0RVIpo)
+
+## Conclusion
 
 ## Built With
 
 * [Visual Studio Code](https://code.visualstudio.com/) - IDE used
+* [Node.js](https://nodejs.org/en/) - Allows execution of JavaScript outside the browser
 * [Alexa Developer Console](https://developer.amazon.com/alexa/console/ask) - Used to create and distribute the skill
 * [AWS Lambda](https://aws.amazon.com/lambda/) - AWS Lamdba is used to host the source code used by the skill
+* [Ask CLI](* [StackOverflow](https://stackoverflow.com/) - Community forum for troubleshooting) - Tool to manage Alexa skills and related resources
 * [GiantBomb API](https://www.giantbomb.com/api/) - API used to access game, location and character information
 * [StackOverflow](https://stackoverflow.com/) - Community forum for troubleshooting
 
 ## Authors
 
-* **Cian Gannon** - *Source code and UI* - [Github](https://github.com/cian2009)
-* **Aron O Malley** - *Source code and Research* - [Github](https://github.com/badwulf51)
+* **Cian Gannon** - *Source code, UI and Research* - [Github](https://github.com/cian2009)
+* **Aron O Malley** - *Source code, UI and Research* - [Github](https://github.com/badwulf51)
 
 ## License
 
