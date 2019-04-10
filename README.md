@@ -108,8 +108,8 @@ Audio:                |  UI:
 Due to how alexa works to find which intent works best with what the user is trying to call, we can also used phrases not built into how intents are called.
 Alexa is very good at adapting to the user using a phrase outside what the intents have been built to use.
 
-Example call:
-<img src="https://imgur.com/TW7ifza.png"/>
+Example invocation:
+> Alexa ask game finder about fallout 3
 
 Audio:                |  UI:
 :-------------------------:|:-------------------------:
@@ -152,7 +152,7 @@ The Certification process was very quick and gave feedback along the way in orde
 * [Node.js](https://nodejs.org/en/) - Allows execution of JavaScript outside the browser
 * [Alexa Developer Console](https://developer.amazon.com/alexa/console/ask) - Used to create and distribute the skill
 * [AWS Lambda](https://aws.amazon.com/lambda/) - AWS Lamdba is used to host the source code used by the skill
-* [Ask CLI]([https://www.npmjs.com/package/ask-cli) - Tool to manage Alexa skills and related resources
+* [Ask CLI](https://www.npmjs.com/package/ask-cli) - Tool to manage Alexa skills and related resources
 * [GiantBomb API](https://www.giantbomb.com/api/) - API used to access game, location and character information
 * [StackOverflow](https://stackoverflow.com/) - Community forum for troubleshooting
 

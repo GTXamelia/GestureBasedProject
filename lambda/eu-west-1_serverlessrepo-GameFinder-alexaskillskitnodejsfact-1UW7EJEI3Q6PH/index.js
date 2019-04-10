@@ -198,48 +198,96 @@ const FindGameIntent_Handler = {
                 .getResponse();
 
         }
+
+        // For server side testing
+        console.log("Inside  : " + request.intent.name);
+
+        // Variable for what alexa will say to the user
         let say = '';
 
+        // Gets slot values
         let slotValues = getSlotValues(request.intent.slots);
 
+        // Check that the slot 'game' is not null and not empty
         if (slotValues.game.heardAs && slotValues.game.heardAs !== '') {
 
+            // Base query
             var query = '/api/search/?api_key=229e0d62353bdc198fed73d614e8e087bd9966f8&format=json&query=';
 
+            // Query plus the game slot formatted to replace spaces with '+' so the API understands the string
             query += slotValues.game.heardAs.split(' ').join('+')
 
-            console.log(query);
+            // Output the entire query for server testing
+            console.log("www.giantbomb.com" + query);
 
+            // Promise callback.
+            // The promise callback is used to to make the asynchronous http request into synchronous request
+            // Without the promise request the callback would be skipped and by the time Alexa has gotten the 
+            // API data Alexa will have run the return statement at the end which is only used for errors.
             return new Promise((resolve) => {
                 httpGet(query, (theResult) => {
-
+                    // JSON object result of the request to the API
                     var json = JSON.parse(theResult);
 
-                    console.log("received : " + json.results[0].deck);
+                    // Request data from the api
+                    console.log("Received : " + json);
 
-                    if (json.results[0].first_appeared_in_game.name != null) {
-                        say += json.results[0].deck;
+                    // Check if the request has any data
+                    if (json.number_of_total_results > 0) {
+                        // If deck is not null and not emtpy
+                        if (json.results[0].deck && json.results[0].deck != '') {
+                            // Add deck (Description) to say string
+                            say += json.results[0].deck;
 
+                            // Prompt alexa to say and swho something
+                            resolve(handlerInput.responseBuilder
+                                .speak(say)
+                                .withStandardCard(slotValues.game.heardAs,
+                                say,
+                                json.results[0].image.small_url,
+                                json.results[0].image.medium_url)
+                                .getResponse());
+
+                        } else {
+                            say += "Couldn't find any details about " + slotValues.game.heardAs;
+
+                            // Prompt alexa to say and swho something
+                            resolve(handlerInput.responseBuilder
+                                .speak('Try again, ' + say + ". Or say exit to quit.")
+                                .reprompt('Try again, ' + say)
+                                .withStandardCard(slotValues.game.heardAs,
+                                'Try again, ' + say + '. Or say exit to quit.',
+                                'https://imgur.com/nBF0w5g.png',
+                                'https://imgur.com/DUV58Zp.png')
+                                .getResponse());
+                        }
                     } else {
-                        say += "Couldn't find any details about " + slotValues.person.heardAs + ".";
-                    }
+                        say += "couldn't find any details about " + slotValues.game.heardAs;
 
-                    resolve(handlerInput.responseBuilder
-                        .speak(say)
-                        .withStandardCard(slotValues.game.heardAs,
-                        json.results[0].deck,
-                        json.results[0].image.small_url,
-                        json.results[0].image.medium_url)
-                        .getResponse());
+                        // Prompt alexa to say and swho something
+                        resolve(handlerInput.responseBuilder
+                            .speak('Try again, ' + say + ". Or say exit to quit.")
+                            .reprompt('Try again, ' + say)
+                            .withStandardCard(slotValues.game.heardAs,
+                            'Try again, ' + say + '. Or say exit to quit.',
+                            'https://imgur.com/nBF0w5g.png',
+                            'https://imgur.com/DUV58Zp.png')
+                            .getResponse());
+                    }
                 });
             });
         } else {
-            slotStatus += 'slot game is empty. ';
+            say += 'slot game is empty';
         }
 
-        return responseBuilder
-            .speak(say)
-            .reprompt('try again, ' + say)
+        // Prompt alexa to say and swho something
+        return handlerInput.responseBuilder
+            .speak('Try again, ' + say + ". Or say exit to quit.")
+            .reprompt('Try again, ' + say)
+            .withStandardCard('What is?',
+            'Try again, ' + say + '. Or say exit to quit.',
+            'https://imgur.com/nBF0w5g',
+            'https://imgur.com/DUV58Zp.png')
             .getResponse();
     },
 };
@@ -255,7 +303,7 @@ const FindPersonIntent_Handler = {
         const responseBuilder = handlerInput.responseBuilder;
         let sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 
-        // delegate to Alexa to collect all the required slots 
+        // Delegate to Alexa to collect all the required slots 
         const currentIntent = request.intent;
         if (request.dialogState && request.dialogState !== 'COMPLETED') {
             return handlerInput.responseBuilder
@@ -264,51 +312,102 @@ const FindPersonIntent_Handler = {
 
         }
 
+        // For server side testing
         console.log("Inside  : " + request.intent.name);
 
+        // Variable for what alexa will say to the user
         let say = '';
 
+        // Gets slot values
         let slotValues = getSlotValues(request.intent.slots);
 
+        // Check that the slot 'person' is not null and not empty
         if (slotValues.person.heardAs && slotValues.person.heardAs !== '') {
 
+            // Base query
             var query = '/api/search/?api_key=229e0d62353bdc198fed73d614e8e087bd9966f8&format=json&query=';
 
+            // Query plus the game slot formatted to replace spaces with '+' so the API understands the string
             query += slotValues.person.heardAs.split(' ').join('+')
 
+            // Output the entire query for server testing
             console.log("www.giantbomb.com" + query);
 
+            // Promise callback.
+            // The promise callback is used to to make the asynchronous http request into synchronous request
+            // Without the promise request the callback would be skipped and by the time Alexa has gotten the 
+            // API data Alexa will have run the return statement at the end which is only used for errors.
             return new Promise((resolve) => {
                 httpGet(query, (theResult) => {
+                    // JSON object result of the request to the API
                     var json = JSON.parse(theResult);
-                    console.log("received : " + json.results[0].deck);
 
-                    if (json.results[0].first_appeared_in_game.name != null) {
-                        say += json.results[0].deck;
+                    // Request data from the api
+                    console.log("Received : " + json);
 
+                    // Check if the request has any data
+                    if (json.number_of_total_results > 0) {
+                        // If deck is not null and not emtpy
+                        if (json.results[0].deck && json.results[0].deck != '') {
+                            // Add deck (Description) to say string
+                            say += json.results[0].deck;
+
+                            // Check if theres data for first_appeared_in_game (First game character appeared in)
+                            if (json.results[0].first_appeared_in_game.name != null) {
+                                // Add first_appeared_in_game to say string
+                                say += " First game appeared in was " + json.results[0].first_appeared_in_game.name;
+                            }
+
+                            // Prompt alexa to say and swho something
+                            resolve(handlerInput.responseBuilder
+                                .speak(say)
+                                .withStandardCard(slotValues.person.heardAs,
+                                say,
+                                json.results[0].image.small_url,
+                                json.results[0].image.medium_url)
+                                .getResponse());
+
+                        } else {
+                            say += "couldn't find any details about " + slotValues.person.heardAs;
+
+                            // Prompt alexa to say and swho something
+                            resolve(handlerInput.responseBuilder
+                                .speak('Try again, ' + say + ". Or say exit to quit.")
+                                .reprompt('try again, ' + say)
+                                .withStandardCard(slotValues.person.heardAs,
+                                'Try again, ' + say + '. Or say exit to quit.',
+                                'https://imgur.com/nBF0w5g.png',
+                                'https://imgur.com/DUV58Zp.png')
+                                .getResponse());
+                        }
                     } else {
-                        say += "Couldn't find any details about " + slotValues.person.heardAs + ".";
+                        say += "couldn't find any details about " + slotValues.person.heardAs;
+
+                        // Prompt alexa to say and swho something
+                        resolve(handlerInput.responseBuilder
+                            .speak('Try again, ' + say + ". Or say exit to quit.")
+                            .reprompt('Try again, ' + say)
+                            .withStandardCard(slotValues.person.heardAs,
+                            'Try again, ' + say + '. Or say exit to quit.',
+                            'https://imgur.com/nBF0w5g.png',
+                            'https://imgur.com/DUV58Zp.png')
+                            .getResponse());
                     }
-
-                    if (json.results[0].first_appeared_in_game.name != null) {
-                        say += " First game appeared in was " + json.results[0].first_appeared_in_game.name;
-                    }
-
-
-                    resolve(handlerInput.responseBuilder
-                        .speak(say)
-                        .withStandardCard(slotValues.person.heardAs,
-                        say,
-                        json.results[0].image.small_url,
-                        json.results[0].image.medium_url)
-                        .getResponse());
                 });
             });
         } else {
-            say += 'slot person is empty. ';
+            say += 'slot person is empty';
         }
 
-        return responseBuilder.speak(say).reprompt('try again, ' + say).getResponse();
+        // Prompt alexa to say and swho something
+        return handlerInput.responseBuilder
+            .speak('Try again, ' + say + ". Or say exit to quit.")
+            .reprompt('Try again, ' + say)
+            .withStandardCard('Who is?',
+            'Try again, ' + say + '. Or say exit to quit.',
+            'https://imgur.com/nBF0w5g.png',
+            'https://imgur.com/DUV58Zp.png')
+            .getResponse();
     },
 };
 
@@ -503,7 +602,7 @@ function httpGet(query, callback) {
 
 // Returns true if the skill is running on a device with a display (Echo Show, Echo Spot, etc.) 
 // Enable your skill for display as shown here: https://alexa.design/enabledisplay 
-function supportsDisplay(handlerInput) {                                      
+function supportsDisplay(handlerInput) {
     const hasDisplay =
         handlerInput.requestEnvelope.context &&
         handlerInput.requestEnvelope.context.System &&
