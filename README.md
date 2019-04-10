@@ -6,6 +6,31 @@
 GameFinder is an Alexa Skill which allows user using voice controls to prompt the user to search for details about video games, locations in games and characters in games.
 
 ## Table of contents
+- [GameFinder](#gamefinder)
+  * [Table of contents](#table-of-contents)
+  * [Getting Started](#getting-started)
+    + [Prerequisites](#prerequisites)
+    + [Installing](#installing)
+  * [Tests](#tests)
+    + [Intent Examples](#intent-examples)
+      - [Game](#game)
+      - [Location](#location)
+      - [Character](#character)
+    + [Testing Intents](#testing-intents)
+      - [Phrase not built into intent](#phrase-not-built-into-intent)
+  * [Alexa Skill Store Report](#alexa-skill-store-report)
+    + [Submission (Passed)](#submission--passed-)
+      - [Automatic Review](#automatic-review)
+      - [Manual Review](#manual-review)
+      - [Certification Analysis](#certification-analysis)
+  * [Videos](#videos)
+    + [Presentation](#presentation)
+    + [Demo](#demo)
+  * [Conclusion](#conclusion)
+  * [Built With](#built-with)
+  * [Authors](#authors)
+  * [License](#license)
+  * [Store Page Details](#store-page-details)
 
 ## Getting Started
 
@@ -48,7 +73,7 @@ Git clone https://github.com/cian2009/GestureBasedProject
 ask init
 ```
 
-## Running the tests
+## Tests
 
 ### Intent Examples
 
@@ -75,6 +100,8 @@ Audio:                |  UI:
 Audio:                |  UI:
 :-------------------------:|:-------------------------:
 ![](https://imgur.com/BUINYCy.png)  |  ![](https://imgur.com/pqciSk6.png)
+
+### Testing Intents
 
 #### Phrase not built into intent
 
@@ -109,7 +136,6 @@ And all five 'Built-In Intents' were present and working.
 #### Certification Analysis
 The Certification process was very quick and gave feedback along the way in order to make the process as painless as possible for developers.
 
-
 ## Videos
 
 ### Presentation
@@ -126,7 +152,7 @@ The Certification process was very quick and gave feedback along the way in orde
 * [Node.js](https://nodejs.org/en/) - Allows execution of JavaScript outside the browser
 * [Alexa Developer Console](https://developer.amazon.com/alexa/console/ask) - Used to create and distribute the skill
 * [AWS Lambda](https://aws.amazon.com/lambda/) - AWS Lamdba is used to host the source code used by the skill
-* [Ask CLI](* [StackOverflow](https://stackoverflow.com/) - Community forum for troubleshooting) - Tool to manage Alexa skills and related resources
+* [Ask CLI]([https://www.npmjs.com/package/ask-cli) - Tool to manage Alexa skills and related resources
 * [GiantBomb API](https://www.giantbomb.com/api/) - API used to access game, location and character information
 * [StackOverflow](https://stackoverflow.com/) - Community forum for troubleshooting
 
