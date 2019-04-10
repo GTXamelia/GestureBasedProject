@@ -1,8 +1,9 @@
 <p align="center">
   <a href="https://imgur.com/nBF0w5gC"><img src="https://imgur.com/nBF0w5g.png" height="10%" width="10%" title="header image"/></a>
+  <h1>GameFinder</h1>
 </p>
 
-Brief Desctiption
+GameFinder is an Alexa Skill which allows user using voice controls to prompt the user to search for details about video games, locations in games and characters in games.
 
 ## Table of contents
 
@@ -48,17 +49,31 @@ Git clone https://github.com/cian2009/GestureBasedProject
 
 ## Running the tests
 
-### Adding Transport
-
 ### Intent Examples
 
 #### Game
 
+> Alexa ask game finder what is Fallout 3
+
+Audio:                |  UI:
+:-------------------------:|:-------------------------:
+![](https://imgur.com/jnvMdus.png)  |  ![](https://imgur.com/HVfg2Lo.png)
+
 #### Location
+
+> Alexa ask game finder what is Megaton
+
+Audio:                |  UI:
+:-------------------------:|:-------------------------:
+![](https://imgur.com/1bs61A4.png)  |  ![](https://imgur.com/84hGbu4.png)
 
 #### Character
 
+> Alexa ask game finder who is Master Chief
 
+Audio:                |  UI:
+:-------------------------:|:-------------------------:
+![](https://imgur.com/BUINYCy.png)  |  ![](https://imgur.com/pqciSk6.png)
 
 
 ## Alexa Store Report
