@@ -17,7 +17,8 @@ GameFinder is an Alexa Skill which allows user using voice controls to prompt th
       - [Location](#location)
       - [Character](#character)
     + [Edge Cases](#testing-intents)
-      - [Phrase not built into intent](#phrase-not-built-into-intent)
+      - [Not giving a game, location or character](#not-giving-a-game,-location-or-character)
+      - [Giving non exsisting game, location or character](#giving-non-exsisting-game,-location-or-character)
   * [Alexa Skill Store Report](#alexa-skill-store-report)
     + [Submission (Passed)](#submission--passed-)
       - [Automatic Review](#automatic-review)
@@ -74,6 +75,12 @@ ask init
 ```
 
 ## Tests
+
+<img src="https://imgur.com/SyTQj1Y.png"/>
+
+Tests were conducted on Echo Dot, Echo, Echo Show and Echo Spot.
+
+Testing for visual purposes were done on the Alexa Devloper Console, which provides an Alexa in the browser to test the skill.
 
 ### Intent Examples
 
@@ -133,7 +140,7 @@ Audio:                |  UI:
 
 Audio:                |  UI:
 :-------------------------:|:-------------------------:
-![](https://imgur.com/fGwYeMP.png)  |  ![](https://imgur.com/paw5Y3y.png)
+![](https://imgur.com/fGwYeMP.png)  |  ![](https://imgur.com/RfIZ4FH.png)
 
 ## Alexa Skill Store Report
 
