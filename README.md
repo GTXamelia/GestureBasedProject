@@ -29,6 +29,7 @@ GameFinder was developed as part of Gesture Based UI at GMIT.
     + [Videos](#videos)
       - [Presentation](#presentation)
       - [Demo](#demo)
+    + [Project Write Up](#project-write-up)
   * [Conclusion](#conclusion)
   * [Built With](#built-with)
   * [Authors](#authors)
