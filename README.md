@@ -3,7 +3,8 @@
 </p>
 
 # GameFinder
-GameFinder is an Alexa Skill which allows user using voice controls to prompt the user to search for details about video games, locations in games and characters in games.
+GameFinder is an Alexa Skill which allows user using voice controls to search for details about video games, locations in games and characters in games.
+GameFinder was developed as part of Gesture Based UI at GMIT.
 
 ## Table of contents
 - [GameFinder](#gamefinder)
@@ -24,14 +25,15 @@ GameFinder is an Alexa Skill which allows user using voice controls to prompt th
       - [Automatic Review](#automatic-review)
       - [Manual Review](#manual-review)
       - [Certification Analysis](#certification-analysis)
-  * [Videos](#videos)
-    + [Presentation](#presentation)
-    + [Demo](#demo)
+  * [Project Documentation](#project-documentation)
+    + [Videos](#videos)
+      - [Presentation](#presentation)
+      - [Demo](#demo)
   * [Conclusion](#conclusion)
   * [Built With](#built-with)
   * [Authors](#authors)
-  * [License](#license)
   * [Store Page Details](#store-page-details)
+  * [License](#license)
 
 ## Getting Started
 
@@ -163,13 +165,25 @@ And all five 'Built-In Intents' were present and working.
 #### Certification Analysis
 The Certification process was very quick and gave feedback along the way in order to make the process as painless as possible for developers.
 
-## Videos
+## Project Documentation
 
-### Presentation
+* [Project Specification](https://github.com/cian2009/GestureBasedProject/blob/master/Project-Spec.pdf) - Project specification
+
+The project specification outlined what a proper gesture based UI project should contain. Using what the spec outlined we were able to get an Alexa application that had useful functionality to the market (Link at bottom of page).
+
+The project specification asked for an implementation of a gesture based system (this GitHub repo), documentation of the implementation (below in this section) and short videos of the project in use (below in this section).
+
+### Videos
+Two videos are present. First video is a presentation of the project and the second is a short demo of the project running.
+
+#### Presentation
 [![Presentation](https://imgur.com/9oJxbiZ.png)](https://www.youtube.com/watch?v=kANHj3TlU7M)
 
-### Demo
+#### Demo
 [![Demo](https://imgur.com/teWgtUz.png)](https://www.youtube.com/watch?v=G4bOt0RVIpo)
+
+### Project Write Up
+* [Project Research](LINK TO PDF HERE) - IDE used
 
 ## Conclusion
 
@@ -188,10 +202,10 @@ The Certification process was very quick and gave feedback along the way in orde
 * **Cian Gannon** - *Source code, UI and Research* - [Github](https://github.com/cian2009)
 * **Aron O Malley** - *Source code, UI and Research* - [Github](https://github.com/badwulf51)
 
+## Store Page Details
+
+* **[GameFinder](https://www.amazon.co.uk/Cian-GameFinder/dp/B07QH4N2GG)** - Store page for skill
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
-
-## Store Page Details
-
-* **[GameFinder](LINK HERE)** - Store page for skill
