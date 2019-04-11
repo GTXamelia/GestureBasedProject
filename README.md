@@ -17,9 +17,10 @@ GameFinder was developed as part of Gesture Based UI at GMIT.
       - [Game](#game)
       - [Location](#location)
       - [Character](#character)
-    + [Edge Cases](#testing-intents)
-      - [Not giving a game, location or character](#not-giving-a-game-location-or-character)
-      - [Giving non exsisting game, location or character](#giving-non-exsisting-game-location-or-character)
+    + [Testing Intents](#testing-intents)
+      - [Phrase not built into intent](#phrase-not-built-into-intent)
+      - [Not giving a game, location or character](#not-giving-a-game--location-or-character)
+      - [Giving non exsisting game, location or character](#giving-non-exsisting-game--location-or-character)
   * [Alexa Skill Store Report](#alexa-skill-store-report)
     + [Submission (Passed)](#submission--passed-)
       - [Automatic Review](#automatic-review)
@@ -184,7 +185,7 @@ Two videos are present. First video is a presentation of the project and the sec
 [![Demo](https://imgur.com/teWgtUz.png)](https://www.youtube.com/watch?v=G4bOt0RVIpo)
 
 ### Project Write Up
-* [Project Research](LINK TO PDF HERE) - IDE used
+* [Project Research](LINK TO PDF HERE) - Documentation asked for by the project specification
 
 ## Conclusion
 
@@ -196,6 +197,7 @@ Two videos are present. First video is a presentation of the project and the sec
 * [AWS Lambda](https://aws.amazon.com/lambda/) - AWS Lamdba is used to host the source code used by the skill
 * [Ask CLI](https://www.npmjs.com/package/ask-cli) - Tool to manage Alexa skills and related resources
 * [GiantBomb API](https://www.giantbomb.com/api/) - API used to access game, location and character information
+* [Overleaf](https://www.overleaf.com) - Overleaf is an online LaTeX editor used for project research paper
 * [StackOverflow](https://stackoverflow.com/) - Community forum for troubleshooting
 
 ## Authors
@@ -208,6 +210,8 @@ Two videos are present. First video is a presentation of the project and the sec
 <img src="https://imgur.com/WYE5bi8.png"/>
 
 * **[GameFinder](https://www.amazon.co.uk/Cian-GameFinder/dp/B07QH4N2GG)** - Store page for skill
+
+Getting the skill onto the Amazon/Alexa skill store was quite an easy process once all the basic checks are complete. The process was very similar to the UWP process that Microsoft has for their store. 
 
 ## License
 
