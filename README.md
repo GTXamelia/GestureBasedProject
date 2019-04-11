@@ -205,6 +205,8 @@ Two videos are present. First video is a presentation of the project and the sec
 
 ## Store Page Details
 
+<img src="https://imgur.com/WYE5bi8.png"/>
+
 * **[GameFinder](https://www.amazon.co.uk/Cian-GameFinder/dp/B07QH4N2GG)** - Store page for skill
 
 ## License
