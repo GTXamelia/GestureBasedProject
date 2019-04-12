@@ -185,7 +185,7 @@ Two videos are present. First video is a presentation of the project and the sec
 [![Demo](https://imgur.com/teWgtUz.png)](https://www.youtube.com/watch?v=G4bOt0RVIpo)
 
 ### Project Write Up
-* [Project Research](LINK TO PDF HERE) - Documentation asked for by the project specification
+* [Project Research](https://github.com/cian2009/GestureBasedProject/blob/master/Research/GestureBasedProject.pdf) - Documentation asked for by the project specification
 
 ## Conclusion
 
