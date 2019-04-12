@@ -188,6 +188,7 @@ Two videos are present. First video is a presentation of the project and the sec
 * [Project Research](https://github.com/cian2009/GestureBasedProject/blob/master/Research/GestureBasedProject.pdf) - Documentation asked for by the project specification
 
 ## Conclusion
+Setting up an Alexa skill was the most difficult part as it was something completly new to us. Althought the setup was difficult, once the project was setup, and we had a basic intent working, it was very interesting to see how Voice gestures are developed. The Alexa developement process was very interesting to learn, as gesture based UI becomes a greater part of our lives. It also gave us a large market as the application was was on [Amazon/Alexa skill store](#store-page-details), giving us a userbase to get feedback on our skill and see it live in action on the market for anyone to download.
 
 ## Built With
 
