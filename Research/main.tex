@@ -1,9 +1,10 @@
 \documentclass[a4paper]{scrreprt}
-    
+
 %% Language and font encodings and page settings
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{minted}
 \usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=2cm]{geometry}
 \usepackage{float}
 
@@ -13,6 +14,12 @@
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage[allcolors=blue]{hyperref}
 \graphicspath{{./img/}}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
 
 %% BibLaTeX settings
 \usepackage[backend=biber]{biblatex}
